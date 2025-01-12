@@ -1,0 +1,26 @@
+import serial
+import time
+
+try:
+    # Open the serial port
+    arduino = serial.Serial(port='COM8', baudrate=9600, timeout=1)
+    print("Connected to Arduino")
+    
+    # Send data to Arduino
+    arduino.write("Password\n".encode())  # Encode the string as bytes
+    print("Data sent: h")
+
+    # Optional: Wait for a response (if Arduino sends back data)
+    time.sleep(0.1)
+    if arduino.in_waiting > 0:
+        response = arduino.readline().decode().strip()
+        print(f"Received from Arduino: {response}")
+
+except serial.SerialException as e:
+    print(f"Error: {e}")
+
+finally:
+    # Safely close the serial connection
+    if 'arduino' in locals() and arduino.is_open:
+        arduino.close()
+        print("Serial connection closed")

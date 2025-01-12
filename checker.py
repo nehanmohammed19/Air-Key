@@ -1,6 +1,8 @@
 from pymongo import MongoClient
 from datetime import datetime
 from leapc_cffi import ffi, libleapc
+import serial
+import time 
 
 # Connect to MongoDB Atlas
 
@@ -145,7 +147,7 @@ def password_checker():
 password = password_checker()
 for doc in documents:
     if password == doc["passwordSequence"]:
-        print("Password Found")
+        password_found = 'Password\n'
         data = {
             'name': doc["name"],
             'date':  datetime.utcnow()
@@ -153,5 +155,13 @@ for doc in documents:
         insert_result = collection2.insert_one(data)
         break
 else:
-    print("Password not found")
+    password_found = 'noPassword\n'
+     
+arduino = serial.Serial(port='COM8', baudrate=9600, timeout=.1)
 
+def send_to_arduino(message):
+    arduino.write(message.encode())  # Send data to Arduino
+    time.sleep(0.1)  # Small delay for Arduino to process
+
+send_to_arduino(password_found)  # Send result to Arduino
+print(f"Sent to Arduino: {password_found}")
