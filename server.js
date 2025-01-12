@@ -26,7 +26,27 @@ app.get('/data', async (req, res) => {
 });
 
 
-const mongoURI = 'mongodb+srv://thecargaming:notpassword@cluster0.jepcu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+
+
+const ReqSchema = new mongoose.Schema({
+  name: String,
+  date: Date  // Simplified to just 'date'
+}, { collection: 'req' });  // Explicitly set to 'req' collection
+
+const Req = mongoose.model('Req', ReqSchema);
+
+// /log endpoint to fetch logs with name and date
+app.get('/log', async (req, res) => {
+  try {
+      const logs = await Req.find({}, { _id: 0, name: 1, date: 1 });
+      res.json(logs);
+  } catch (err) {
+      res.status(500).json({ error: err.message });
+  }
+});
+
+
+const mongoURI = 'YOUR-API-KEY';
 
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected'))

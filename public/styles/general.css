@@ -7,8 +7,10 @@
 
 /* Body styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
 }
 
 /* Header styles */
@@ -19,14 +21,21 @@ header {
     right: 0;
     background-color: #333;
     color: white;
-    padding: 20px;
+    padding: 15px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 10;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
 }
 
-/* Center the title inside the header */
+/* Title styling */
+.header-title {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin: 0;
+    color: #fff;
+}
 
 /* Button styles in the header */
 .header-btn {
@@ -37,24 +46,83 @@ header {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .header-btn:hover {
     background-color: #0056b3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* Main content styles */
 .main-content {
-    margin-top: 100px; /* Add margin to push content below the fixed header */
+    margin-top: 100px; /* Space below fixed header */
+    padding: 40px 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
 }
 
 h2 {
-    font-size: 2em;
+    font-size: 2.5em;
     color: #333;
+    margin-bottom: 20px;
 }
 
 p {
     font-size: 1.2em;
     color: #666;
+    line-height: 1.8;
+}
+
+/* Main content styles */
+.main-content {
+    margin-top: 120px; /* Push content below the fixed header */
+    padding: 40px 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url('your-background-image.jpg'); /* Replace with your image path */
+    background-size: cover; /* Ensure the image covers the entire area */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent tiling */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    border-radius: 10px; /* Rounded corners for a modern look */
+    text-align: center; /* Center the text */
+    color: white; /* Set text color to white for contrast against the background */
+    background-color: white;
+    border: 2px solid #007BFF; /* Add a border around the content */
+}
+
+/* Welcome heading */
+.main-content h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Paragraph styling */
+.main-content p {
+    font-size: 1.2em;
+    line-height: 1.8; /* Better readability with spacing between lines */
+    margin-bottom: 20px;
+}
+
+/* Highlighted text for buttons or important instructions */
+.main-content strong {
+    color: #FFD700; /* Use a gold-like color for emphasis */
+    font-weight: bold;
+}
+
+/* Add hover effect for links or emphasized elements inside the content */
+.main-content a {
+    color: #FFD700;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.main-content a:hover {
+    text-decoration: underline;
 }

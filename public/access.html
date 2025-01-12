@@ -22,7 +22,7 @@
 </head>
 <body>
 
-    <h2 style="text-align:center;">User Data Table</h2>
+    <h2 style="text-align:center;">User Access Log</h2>
     <table id="dataTable">
         <thead>
             <tr>
@@ -50,11 +50,13 @@
                     const nameCell = document.createElement('td');
                     nameCell.textContent = user.name;
 
-                    const sequenceCell = document.createElement('td');
-                    sequenceCell.textContent = user.date.join(', ');
+                    const dateCell = document.createElement('td');
+                    // Format the date to a readable format
+                    const formattedDate = new Date(user.date).toLocaleString();
+                    dateCell.textContent = formattedDate;
 
                     row.appendChild(nameCell);
-                    row.appendChild(sequenceCell);
+                    row.appendChild(dateCell);
 
                     tableBody.appendChild(row);
                 });
