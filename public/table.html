@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database</title>
+    <style>
+        /* Body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Header styling */
+        h2 {
+            text-align: center;
+            margin: 20px 0;
+            color: #333;
+        }
+
+        /* Table container styling */
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #fff;
+        }
+
+        /* Table header styling */
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 18px;
+            padding: 12px;
+        }
+
+        /* Table row and cell styling */
+        td {
+            padding: 12px;
+            text-align: center;
+            font-size: 16px;
+            color: #333;
+        }
+
+        /* Alternate row colors for better readability */
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        /* Hover effect for table rows */
+        tr:hover {
+            background-color: #ddd;
+            cursor: pointer;
+        }
+
+        /* Border for table cells */
+        th, td {
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>User Data Table</h2>
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Password Sequence</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will load here -->
+        </tbody>
+    </table>
+
+    <script>
+        async function loadData() {
+            try {
+                const response = await fetch('http://localhost:3000/data');
+                const data = await response.json();
+
+                const tableBody = document.querySelector('#dataTable tbody');
+                tableBody.innerHTML = '';  // Clear previous data
+
+                data.forEach(user => {
+                    const row = document.createElement('tr');
+
+                    const nameCell = document.createElement('td');
+                    nameCell.textContent = user.name;
+
+                    const sequenceCell = document.createElement('td');
+                    sequenceCell.textContent = user.passwordSequence.join(', ');
+
+                    row.appendChild(nameCell);
+                    row.appendChild(sequenceCell);
+
+                    tableBody.appendChild(row);
+                });
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        // Load data when the page is ready
+        window.onload = loadData;
+    </script>
+
+</body>
+</html>

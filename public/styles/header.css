@@ -1,0 +1,111 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body setup */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    flex-direction: column;
+    padding-top: 60px; /* Space for the header */
+}
+
+/* Header styling */
+header {
+    width: 100%;
+    background-color: #333;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 0;
+}
+
+/* Title in the center */
+header h1 {
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    flex-grow: 1; /* Makes sure the title is centered */
+}
+
+/* Right side button in the header */
+header button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+header button:hover {
+    background-color: #45a049;
+}
+
+/* Container for the form and buttons */
+#registerForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Input text field styling */
+#name {
+    width: 250px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+/* Styling for the 4 buttons */
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Center the buttons horizontally */
+#button1, #button2, #button3, #button4 {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/* Submit Button */
+#submitButton {
+    background-color: #008CBA;
+    font-size: 24px;
+    padding: 15px 30px;
+    border-radius: 8px;
+    width: 250px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#submitButton:hover {
+    background-color: #006f8e;
+}

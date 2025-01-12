@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Request Table</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <h2 style="text-align:center;">User Data Table</h2>
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Access Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will load here -->
+        </tbody>
+    </table>
+
+    <script>
+        async function loadData() {
+            try {
+                const response = await fetch('http://localhost:3000/log');
+                const data = await response.json();
+
+                const tableBody = document.querySelector('#dataTable tbody');
+                tableBody.innerHTML = '';  // Clear previous data
+
+                data.forEach(user => {
+                    const row = document.createElement('tr');
+
+                    const nameCell = document.createElement('td');
+                    nameCell.textContent = user.name;
+
+                    const sequenceCell = document.createElement('td');
+                    sequenceCell.textContent = user.date.join(', ');
+
+                    row.appendChild(nameCell);
+                    row.appendChild(sequenceCell);
+
+                    tableBody.appendChild(row);
+                });
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        // Load data when the page is ready
+        window.onload = loadData;
+    </script>
+
+</body>
+</html>
