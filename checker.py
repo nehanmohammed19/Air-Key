@@ -6,7 +6,7 @@ import time
 
 # Connect to MongoDB Atlas
 
-uri = "mongodb+srv://thecargaming:notpassword@cluster0.jepcu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+uri = ""
 
 client = MongoClient(uri)
 
